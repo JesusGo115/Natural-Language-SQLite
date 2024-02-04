@@ -9,6 +9,11 @@ The program can be installed and run with Node.js as follows with npm: (Assuming
 * ```npm install```
 * ```npm start```
 
+From there you will be prompted to provide type a prompt. Select ENTER when you would like to send the prompt to the AI. You will see in dark blue the query the AI is running, as well as the result in bright blue.
+
+![image](https://github.com/vviseguy/Natural-Language-SQLite/assets/16418680/eae54b18-6c4a-475e-bfa2-92d43b44ab69)
+
+
 # Design Choices
 Deciding how to generate the prompts for GPT was difficult. I spent a lot of time fine-tuning them. I had tried to provide examples of proper input in some cases to the AI, but I found that including more details tended to confuse the AI more. Simpler seemed to be better. In the end, I opted for a one-off style approach.
 
@@ -28,5 +33,13 @@ Unsucessful commands have incuded:
 
 Success varies apparently randomly. I believe that using GPT 4 instead of 3.5 would provide substantially more reliable results.
 
-# Changing Version
+# Changing GPT Version
 The version is selected from the plain-text list of gpt model versions found in ```version.chat```. The first recognized version will be selected. Versions should be deliminated with new lines.
+
+Invalid versions will be rejected until a recognized GPT version is located.
+
+![image](https://github.com/vviseguy/Natural-Language-SQLite/assets/16418680/3df335af-b66a-4ec2-968e-fbdcae10d46e)
+
+
+
+
