@@ -5,9 +5,12 @@ The package provides an example database with ficticious data representing the c
 
 # Running the interface
 
-The program can be installed and run with Node.js as follows with npm: (Assuming that you have a valid OpenAI key in the file api.secret)
+The program can be installed and run with Node.js as follows with npm: (Assuming that you have a valid OpenAI key in the file ```apikey.secret```)
 * ```npm install```
 * ```npm start```
+
+# Design Choices
+Deciding how to generate the prompts for GPT was difficult. I spent a lot of time fine-tuning them. I had tried to provide examples of proper input in some cases to the AI, but I found that including more details tended to confuse the AI more. Simpler seemed to be better. In the end, I opted for a one-off style approach.
 
 # Example Commands
 It should be noted that commands produce varying outputs at the whim of the AI. Our AI output has too much noise. I believe there is a way to fine tune it, but I have been unable to successfully do so to eliminate noise to date.
