@@ -4,7 +4,7 @@ This is a natural language interface to a SQLite database written in Node.js.
 The package provides an example database with ficticious data representing the classes a school would offer, including registration, grades, instructors and departments. See the diagram below for more information.
 Any resemblance to real people/circumstances is purely coincidental and unintended.
 
-# Running the interface
+# Running the Interface
 
 The program can be installed and run with Node.js as follows with npm: (Assuming that you have a valid OpenAI key in the file ```apikey.secret```)
 * ```npm install```
