@@ -23,7 +23,7 @@ Deciding how to generate the prompts for GPT was difficult. I spent a lot of tim
 # Example Commands
 It should be noted that commands produce varying outputs at the whim of the AI. Success apparently varies randomly, yet **success seems *much* more probable when using a variant of GPT 4**. 
 
-## Successful commands have incuded:
+## Successful Commands Have Incuded:
 1. What is the average grade for Jacob's classes?
 1. What is Jacob's GPA?
 1. What class is largest?
@@ -39,7 +39,7 @@ See below for a few examples of successful prompts:
 > ![image](https://github.com/vviseguy/Natural-Language-SQLite/assets/16418680/8ed965ff-562e-4f5a-abd5-c3f6ca5ebaa6)
 
 
-## Unsucessful commands have incuded:
+## Unsucessful Commands Have Incuded:
 1. What is Jacob's GPA?
 1. What class is largest?
 
