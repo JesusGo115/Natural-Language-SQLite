@@ -16,7 +16,7 @@ const readline = createInterface({
 
 const getContext = async () =>
   (await GPTSession.retrieveContext("./personality.chat")) +
-  (await GPTSession.retrieveContext("./db/data.sql"));
+  (await GPTSession.retrieveContext("./db/tables.sql"));
 
 const gpt = new GPTSession(getContext());
 await gpt.isReady();

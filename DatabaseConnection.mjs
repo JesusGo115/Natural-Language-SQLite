@@ -53,10 +53,10 @@ export default class DatabaseConnection {
       this.db.all(query, [], (err, rows) => {
         // close the database connection
         this.db.close();
+        console.log(CC.get("RESPONSE")+CC.effect("dim")+"SQLite query: "+query);
 
         if (err) {
-          console.log("");
-          console.log(CC.get("RESPONSE")+CC.effect("dim")+"SQLite query: "+query);
+        //   console.log("");
           console.log(CC.applyTheme("ERROR",err));
           rows = JSON.stringify(err);
         }

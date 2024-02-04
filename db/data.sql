@@ -65,41 +65,40 @@ VALUES
 INSERT INTO Sections
     (course_id, section_number, instructor_id, semester)
 VALUES
-    (1, 1, NULL, "Winter 2020"),    (1, 2, NULL, "Winter 2020"),    (1, 3, NULL, "Winter 2020"),
-    (1, 1, NULL, "Fall 2020"),      (1, 2, NULL, "Fall 2020"),      (1, 3, NULL, "Fall 2020"),  
-    (1, 1, NULL, "Winter 2021"),    (1, 2, NULL, "Winter 2021"),    (1, 3, NULL, "Winter 2021"),
-    (1, 1, NULL, "Fall 2021"),      (1, 2, NULL, "Fall 2021"),      (1, 3, NULL, "Fall 2021"),  
-    (1, 1, NULL, "Winter 2022"),    (1, 2, NULL, "Winter 2022"),    (1, 3, NULL, "Winter 2022"),
+    ("CS 142", 1, NULL, "Winter 2020"),    ("CS 142", 2, NULL, "Winter 2020"),    ("CS 142", 3, NULL, "Winter 2020"),
+    ("CS 142", 1, NULL, "Fall 2020"),      ("CS 142", 2, NULL, "Fall 2020"),      ("CS 142", 3, NULL, "Fall 2020"),  
+    ("CS 142", 1, NULL, "Winter 2021"),    ("CS 142", 2, NULL, "Winter 2021"),    ("CS 142", 3, NULL, "Winter 2021"),
+    ("CS 142", 1, NULL, "Fall 2021"),      ("CS 142", 2, NULL, "Fall 2021"),      ("CS 142", 3, NULL, "Fall 2021"),  
+    ("CS 142", 1, NULL, "Winter 2022"),    ("CS 142", 2, NULL, "Winter 2022"),    ("CS 142", 3, NULL, "Winter 2022"), -- 15
 
-    (2, 1, NULL, "Fall 2022"),      (2, 2, NULL, "Fall 2022"),      (2, 3, NULL, "Fall 2022"),
-    (2, 1, NULL, "Winter 2023"),    (2, 2, NULL, "Winter 2023"),    (2, 3, NULL, "Winter 2023"),
-    (2, 1, NULL, "Fall 2023"),      (2, 2, NULL, "Fall 2023"),      (2, 3, NULL, "Fall 2023"),
-    (3, 42, NULL, "Fall 2022"), -- american heritage
-    (15, 2, 6, "Fall 2023"), -- 312
-
-    (14, 4, NULL, "Winter 2023"), -- 260
-    (11, 2, 3, "Winter 2023"), -- 236
-    (7,  7, 3, "Fall 2022"), -- 224
-    (10, 2, 4, "Fall 2022"), -- 235
-    (16, 1, 2, "Fall 2023"), -- 465
+    ("CS 111", 1, NULL, "Fall 2022"),      ("CS 111", 2, NULL, "Fall 2022"),      ("CS 111", 3, NULL, "Fall 2022"),
+    ("CS 111", 1, NULL, "Winter 2023"),    ("CS 111", 2, NULL, "Winter 2023"),    ("CS 111", 3, NULL, "Winter 2023"),
+    ("CS 111", 1, NULL, "Fall 2023"),      ("CS 111", 2, NULL, "Fall 2023"),      ("CS 111", 3, NULL, "Fall 2023"), -- 24
+    ("A GTG 100", 42, NULL, "Fall 2022"), -- 25
     
-    (8, 1, NULL, "Fall 1999"), -- lin alg
-    (8, 1, 1, "Fall 2025"); -- lin alg w dallin as teacher
+    ("CS 312", 2, 6, "Fall 2023"), -- 26
+    ("CS 260", 4, NULL, "Winter 2023"),
+    ("CS 236", 2, 3, "Winter 2023"),
+    ("CS 224",  7, 3, "Fall 2022"),
+    ("CS 235", 2, 4, "Fall 2022"),
+    
+    ("CS 465", 1, 2, "Fall 2023"), -- 31
+    ("MATH 213", 1, NULL, "Fall 1999"), ("MATH 213", 1, 1, "Fall 2025"); -- dallin as teacher
 
 INSERT INTO Enrollments
     (student_id, section_id, grade)
 VALUES
-    (1, 16, 4.00), (1, 9,  3.00), -- Dallin
+    (1, 31, 4.00), (1, 32, 4.00), (1, 25,  3.00), -- Dallin
 
-    (2, 17, 0.00), (2, 10, 4.00), (2, 11, 2.70), (2, 12, 4.00), (2, 13, 4.00), -- Jacob Wise
-    (2, 14, 4.00), (2, 15, 3.70),
+    (2, 33, 0.00), (2, 26, 4.00), (2, 27, 2.70), (2, 28, 4.00), (2, 29, 4.00), -- Jacob Wise
+    (2, 30, 4.00), (2, 31, 3.70),
 
-    (3, 9, 3.30), -- Luke
+    (3, 25, 3.30), -- Luke
 
     -- Carson
 
-    (5, 9, 4.00), (5, 10, 4.00), -- Kimball
+    (5, 25, 4.00), (5, 26, 4.00), -- Kimball
 
-    (6, 9, 2.00), -- John
+    (6, 25, 2.00), -- John
 
-    (7, 9, 5.00), (7, 10, 4.00), (7, 16, 4.00); -- Sally
+    (7, 25, 5.00), (7, 26, 4.00), (7, 30, 4.00); -- Sally
