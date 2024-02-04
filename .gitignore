@@ -1,5 +1,4 @@
 node_modules
 package-lock.json
 apikey.secret
-
-data/database.db
+db/database.db
