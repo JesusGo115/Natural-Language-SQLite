@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS Courses (
     department TEXT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS Sections ( -- aka "Classes"
+CREATE TABLE IF NOT EXISTS Sections ( -- aka "classes"
 	id  INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT,
 
 	course_id	TEXT NOT NULL,
@@ -47,10 +47,10 @@ CREATE TABLE IF NOT EXISTS Sections ( -- aka "Classes"
 
 CREATE TABLE IF NOT EXISTS Enrollments (
 	student_id  INTEGER NOT NULL,
-	class_id   TEXT NOT NULL,
+	section_id   TEXT NOT NULL,
 	grade   FLOAT CHECK (grade BETWEEN 0.0 AND 5.0),
     
     FOREIGN KEY (student_id) REFERENCES Students(id),
-    FOREIGN KEY (class_id) REFERENCES Sections(id)
+    FOREIGN KEY (section_id) REFERENCES Sections(id)
 );
 

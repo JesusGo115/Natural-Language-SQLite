@@ -87,7 +87,7 @@ VALUES
     (8, 1, 1, "Fall 2025"); -- lin alg w dallin as teacher
 
 INSERT INTO Enrollments
-    (student_id, class_id, grade)
+    (student_id, section_id, grade)
 VALUES
     (1, 16, 4.00), (1, 9,  3.00), -- Dallin
 
