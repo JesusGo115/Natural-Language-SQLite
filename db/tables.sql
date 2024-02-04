@@ -53,4 +53,3 @@ CREATE TABLE IF NOT EXISTS Enrollments (
     FOREIGN KEY (student_id) REFERENCES Students(id),
     FOREIGN KEY (section_id) REFERENCES Sections(id)
 );
-

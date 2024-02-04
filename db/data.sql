@@ -76,7 +76,7 @@ VALUES
     ("CS 111", 1, NULL, "Fall 2023"),      ("CS 111", 2, NULL, "Fall 2023"),      ("CS 111", 3, NULL, "Fall 2023"), -- 24
     ("A GTG 100", 42, NULL, "Fall 2022"), -- 25
     
-    ("CS 312", 2, 6, "Fall 2023"), -- 26
+    ("CS 312", 2, 5, "Fall 2023"), -- 26
     ("CS 260", 4, NULL, "Winter 2023"),
     ("CS 236", 2, 3, "Winter 2023"),
     ("CS 224",  7, 3, "Fall 2022"),

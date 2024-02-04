@@ -39,12 +39,12 @@ export default class GPTSession {
         await this.isReady();
 
         if (question == null) throw new Error("Error: null question");
-        if (question == []) {
+        
+        question = JSON.stringify(question);
+        if (question == "[]") {
             console.log(CC.use(CC.get("ERROR"),"No results found in query."));
-            question = "No results found in query.";
         }
 
-        question = JSON.stringify(question);
 
         this.messages.push({"role": "user", "content": question});
         
