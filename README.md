@@ -1,8 +1,9 @@
 # Natural Language SQLite Interface with OpenAI's GPT Models
 
 This is a natural language interface to a SQLite database written in Node.js. 
-The package provides an example database with ficticious data representing the classes a school would offer, including registration, grades, instructors and departments. See the diagram below for more information.
+The package provides an example database with ficticious data representing the classes a school would offer, including registration, grades, instructors and departments. See the diagram at the bottom of the page for more information.
 Any resemblance to real people/circumstances is purely coincidental and unintended.
+
 
 # Running the Interface
 
@@ -19,6 +20,7 @@ From here you will be asked to provide type a question for the AI. Select ENTER 
 
 # Design Choices
 Deciding how to generate the prompts for GPT was difficult. I spent a lot of time fine-tuning them. I had tried to provide examples of proper input in some cases to the AI, but I found that including more details tended to confuse the AI more. Simpler seemed to be better. In the end, I opted for a one-off style approach.
+
 
 # Example Commands
 It should be noted that commands produce varying outputs at the whim of the AI. Success apparently varies randomly, yet **success seems *much* more probable when using a variant of GPT 4**. 
@@ -61,6 +63,11 @@ Invalid versions will be rejected until a recognized GPT version is located.
 
 > ![image](https://github.com/vviseguy/Natural-Language-SQLite/assets/16418680/3df335af-b66a-4ec2-968e-fbdcae10d46e)
 
+
+# Database Diagram
+Generated with DBSchema.
+
+![image](https://github.com/vviseguy/Natural-Language-SQLite/assets/16418680/084096cf-74f6-405c-a151-ec4944d17a50)
 
 
 
