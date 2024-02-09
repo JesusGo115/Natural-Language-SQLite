@@ -7,13 +7,22 @@ Any resemblance to real people/circumstances is purely coincidental and unintend
 
 # Running the Interface
 
-The program can be installed and run with Node.js as follows with npm: (Assuming that you have a valid OpenAI key in the file ```apikey.secret```)
+Once downloaded/cloned, the project should be prepared by placing your OpenAI access token in a file named  ```apikey.secret```, and running the following command. This will bring in all of the javacsript dependancies.
 * ```npm install```
-* ```npm start```
 
-![image](https://github.com/vviseguy/Natural-Language-SQLite/assets/16418680/416bb54c-d52b-4179-b274-3195991dca91)
+The program may be run with a command like the following:
+* ```npm start --db=<database file> [--create=<create statements file>} --create=<import statements file>}]```
 
-From here you will be asked to provide type a question for the AI. Select ENTER when you would like to send the prompt to the AI. You will see in dark blue the query the AI is running, as well as the result in bright blue.
+When a create statements file is not provided, the program expects that the database file will contain a databse in a sqlite3 recognizable format. When a create statements file is provided, any contents in that file will be overwritten with a new database.
+
+Alternatively, you can use a test database which I have created as follows:
+* ```npm test```
+
+A successful start up should look something like the following:
+
+> ![image](https://github.com/vviseguy/Natural-Language-SQLite/assets/16418680/b8060e9b-2965-4853-a6e6-d2f54de81f85)
+
+A successful start-up will be followed by a prompt for a question to process. Type your question and select ENTER when you are ready for the AI to process your query. The SQL which the AI is running will display in dark blue, and the natural language result will display in bright blue.
 
 > ![image](https://github.com/vviseguy/Natural-Language-SQLite/assets/16418680/eae54b18-6c4a-475e-bfa2-92d43b44ab69)
 
@@ -59,12 +68,12 @@ The last example is somewhat counterintuitive. While there exist classes which h
 # Changing the GPT Version
 The version is selected from the plain-text list of gpt model versions found in ```version.chat```. The first recognized version will be selected. Versions should be deliminated with new lines.
 
-Invalid versions will be rejected until a recognized GPT version is located.
+Invalid versions will be rejected until a recognized GPT model is recognized.
 
 > ![image](https://github.com/vviseguy/Natural-Language-SQLite/assets/16418680/3df335af-b66a-4ec2-968e-fbdcae10d46e)
 
 
-# Database Diagram
+# Test Database Diagram
 Generated with DBSchema.
 
 ![image](https://github.com/vviseguy/Natural-Language-SQLite/assets/16418680/084096cf-74f6-405c-a151-ec4944d17a50)
