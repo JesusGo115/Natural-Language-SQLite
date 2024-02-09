@@ -2,6 +2,7 @@ import GPTSession from "./GPTSession.mjs";
 import { createInterface } from "readline";
 import DBConnection from "./DatabaseConnection.mjs";
 import CC from "./ConsoleColors.mjs";
+import { error } from "console";
 
 CC.setTheme("THEME", CC.RESET);
 CC.setTheme("RESPONSE", CC.effect("bright")+CC.color("blue"));
@@ -14,17 +15,22 @@ const readline = createInterface({
   output: process.stdout,
 });
 
-const getContext = async () =>
+if (process.argv.length < 5){
+  throw new error("Need more params")
+}
+
+const getContext = async () => 
   (await GPTSession.retrieveContext("./personality.chat")) +
-  (await GPTSession.retrieveContext("./db/tables.sql"));
+  (await GPTSession.retrieveContext(process.argv[3]));
 
 const gpt = new GPTSession(getContext());
 await gpt.isReady();
 
-const database = new DBConnection();
+console.log(CC.RESET+"\n");
+const database = new DBConnection(process.argv[2], process.argv[3], process.argv[4]);
 await database.isReady();
 
-console.log(CC.RESET+"Ready!\n");
+console.log(CC.RESET+"\n");
 processQuery();
 
 
@@ -43,3 +49,12 @@ function processQuery() {
     processQuery();
   });
 }
+
+// process.on('SIGTERM', () => {
+//   database.remove();
+//   process.exit(0);
+// });
+// process.on('SIGINT', () => {
+//   database.remove();
+//   process.exit(0);
+// });

@@ -4,8 +4,8 @@
   "description": "A web server that provides natural language interface via ChatGPT with a local MySQL server",
   "main": "index.js",
   "scripts": {
-    "start":"node index.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"node index.mjs ${npm_config_db} ${npm_config_create} ${npm_config_import}",
+    "test": "node index.mjs ./db/database.db ./db/tables.sql ./db/data.sql"
   },
   "author": "Jacob Wise",
   "license": "ISC",

@@ -21,7 +21,6 @@ CREATE TABLE IF NOT EXISTS Instructors (
 	id  INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT,
     person_id INTEGER NOT NULL UNIQUE,
     pass_rate FLOAT CHECK (pass_rate IS NULL OR pass_rate BETWEEN 0.0 AND 100.0),
-    
     FOREIGN KEY (person_id) REFERENCES Persons(person_id)
 );
 
@@ -34,13 +33,10 @@ CREATE TABLE IF NOT EXISTS Courses (
 
 CREATE TABLE IF NOT EXISTS Sections ( -- aka "classes"
 	id  INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT,
-
 	course_id	TEXT NOT NULL,
     section_number  INTEGER NOT NULL,
 	instructor_id  INTEGER,
-
     semester TEXT NOT NULL,
-
     FOREIGN KEY (course_id) REFERENCES Courses(id),
     FOREIGN KEY (instructor_id) REFERENCES Instructors(id)
 );

@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import {readFile} from 'node:fs/promises';
 import CC from "./ConsoleColors.mjs";
+import fs from "fs";
 
 const apiKey = await readFile('apikey.secret')
 const setup = {
@@ -19,12 +20,17 @@ export default class GPTSession {
     }
 
     async setUp(context, version){
-        this.context = await context;
-        if (context == null) throw new Error("Error: null context");
-        this.messages =  [{"role": "system", "content": await context}];
-
-        this.version = await version;
-        if (version == null) throw new Error("Error: null context");
+        try{
+            this.context = await context;
+            if (context == null) throw new Error("Internal error: null context string");
+            this.messages =  [{"role": "system", "content": await context}];
+            this.version = await version;
+            if (version == null) throw new Error("Internal error: null version string");
+        }
+        catch (e){
+            console.log(CC.use(CC.get("ERROR"), "\n"+e))
+            process.exit(1);
+        }
     }
 
     async isReady(){
@@ -64,6 +70,9 @@ export default class GPTSession {
 
     
     static async retrieveContext(file = 'personality.chat'){
+        if (!fs.existsSync(file))
+            throw new Error("GPT context file does not exist: "+file);
+        
         let rtrn = await readFile(file, { encoding: 'utf8' });
         const rgx = /^v(?:ersion)?:? *(.+)/i;
         if (rtrn.match(rgx)){
@@ -76,7 +85,10 @@ export default class GPTSession {
         return rtrn + "\n";
     }
 
-    static async retrieveGPTVersion(){
+    static async retrieveGPTVersion(versionFile = 'version.chat'){
+        if (!fs.existsSync(versionFile))
+            throw new Error("GPT version file does not exist: "+file);
+
         const VERSION_OPTIONS = [
             'gpt-3.5-turbo' ,
             'gpt-4-0125-preview',
@@ -88,7 +100,7 @@ export default class GPTSession {
             'gpt-3.5-turbo',
         ]
         const DEFAULT_VERSION = 'gpt-3.5-turbo';
-        let data = await readFile('version.chat', { encoding: 'utf8' });
+        let data = await readFile(versionFile, { encoding: 'utf8' });
         data = data.split("\n");
         data = data.map(element => element.trim());
         data.push(VERSION_OPTIONS[0]);
@@ -101,7 +113,7 @@ export default class GPTSession {
                 
             }
         }; 
-        console.log(CC.effect("dim")+"Loaded: " + CC.color("green", data[0]));
+        console.log(CC.effect("dim")+"Version: " + CC.color("green", data[0]));
         return data[0];
         
     }

@@ -2,31 +2,44 @@ import sqlite3 from "sqlite3";
 import fs from "fs";
 import CC from "./ConsoleColors.mjs";
 export default class DatabaseConnection {
-  constructor(restoreDefault = true) {
+  constructor(dbLocation, createStatements = null, importStatements = null) {
     // open the database
-    this.dbLocation = "./db/database.db";
-    this.readiness = true;
-
-    if (restoreDefault) {
-      this.readiness = this.#runSetup();
-    }
+    this.dbLocation = dbLocation;
+    
+    console.log(CC.applyTheme("THEME", "Using database: " + CC.use(CC.get("RESPONSE")) + dbLocation));
+    this.readiness = this.#runSetup(createStatements, importStatements);
   }
   async isReady() {
     return this.readiness;
   }
-  async #runSetup() {
-    console.log(CC.applyTheme("THEME", "Preparing database connection"));
 
-    fs.writeFileSync(this.dbLocation, "", { encoding: "utf8", flag: "w" });
-
-    // console.log(CC.effect("dim")+"Creating tables...");
-    let setUpSQL = fs.readFileSync("./db/tables.sql", "utf-8");
-    await this.#exec(setUpSQL);
-    // console.log(CC.effect("dim")+"Loading data...");
-    let dataSQL = fs.readFileSync("./db/data.sql", "utf-8");
-    await this.#exec(dataSQL);
-
+  async #runSetup(createStatements, importStatements) {
+    try {
+      if (createStatements) {
+        fs.writeFileSync(this.dbLocation, "", { encoding: "utf8", flag: "w" }); // create db if it doesnt exist already
+        await this.#runSQLFromFile(createStatements, "Running create statements:");
+      }
+      if (importStatements) 
+        await this.#runSQLFromFile(importStatements, "Running import statements:");
+    }
+    catch (e){
+      console.log(CC.use(CC.get("ERROR"), "\n"+e))
+      process.exit(1);
+    }
     return true;
+  }
+  async #runSQLFromFile(file, description = null){
+    const exists = fs.existsSync(file)
+    if (description) 
+      console.log(CC.effect("dim", description + CC.color(exists?"green":"red") + file));
+
+    if (exists){
+      let dataSQL = fs.readFileSync(file, "utf-8");
+      await this.#exec(dataSQL);
+    }
+    else{
+      throw new Error("SQL file does not exist: "+file);
+    }
   }
 
   async #exec(sqlContent) {
@@ -64,5 +77,12 @@ export default class DatabaseConnection {
         resolve(rows);
       });
     });
+  }
+
+  remove(){
+    if (this.db) this.db.close();
+    console.log(CC.get("THEME")+"Closing...");
+
+    fs.unlinkSync(this.dbLocation);
   }
 }

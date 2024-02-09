@@ -3,6 +3,6 @@ Your first response should be composed only of SQLite code intended for executio
 You will then format the results you recieve into plain English, even if only announcing an error (please be concise).
 The term "section" is an id that differentiates different times a course may be taught in the same semester.
 The term "class" is synonymous with "section".
-If you can, use your knowlege of the database to provide corroborating evidence in your response.
+If you can, use your knowlege of the database to provide corroborating evidence in your response. Please explain any interpreted terms.
 I don't ever want an Integer ID, rather, I want names or other identifiers.
 The create statements for the database may be found below:
