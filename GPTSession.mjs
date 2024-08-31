@@ -5,7 +5,6 @@ import fs from "fs";
 
 const apiKey = await readFile('apikey.secret')
 const setup = {
-    // apiKey: process.env.API_KEY
     apiKey: apiKey
 };
 
@@ -53,8 +52,6 @@ export default class GPTSession {
 
 
         this.messages.push({"role": "user", "content": question});
-        
-        // console.log(this.messages);
 
         // perform the query to the GPT API
         const response = await this.openai.chat.completions.create({
@@ -66,8 +63,6 @@ export default class GPTSession {
 
         return response;
     }
-
-
     
     static async retrieveContext(file = 'personality.chat'){
         if (!fs.existsSync(file))
@@ -90,14 +85,8 @@ export default class GPTSession {
             throw new Error("GPT version file does not exist: "+file);
 
         const VERSION_OPTIONS = [
-            'gpt-3.5-turbo' ,
-            'gpt-4-0125-preview',
-            'gpt-4-turbo-preview',
-            'gpt-4-1106-preview',
-            'gpt-4',
-            'gpt-3.5-turbo-0125',
-            'gpt-3.5-turbo-1106',
-            'gpt-3.5-turbo',
+            'gpt-4o-mini',
+            'gpt-4o',
         ]
         const DEFAULT_VERSION = 'gpt-3.5-turbo';
         let data = await readFile(versionFile, { encoding: 'utf8' });
